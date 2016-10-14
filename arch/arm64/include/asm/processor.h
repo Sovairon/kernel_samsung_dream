@@ -178,9 +178,11 @@ static inline void prefetchw(const void *ptr)
 }
 
 #define ARCH_HAS_SPINLOCK_PREFETCH
-static inline void spin_lock_prefetch(const void *x)
+static inline void spin_lock_prefetch(const void *ptr)
 {
-	prefetchw(x);
+	asm volatile(ARM64_LSE_ATOMIC_INSN(
+		     "prfm pstl1strm, [%x0]",
+		     "nop") : : "p" (ptr));
 }
 
 #define HAVE_ARCH_PICK_MMAP_LAYOUT
