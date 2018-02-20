@@ -106,13 +106,8 @@ fw-shipped-$(CONFIG_USB_KAWETH) += kaweth/new_code.bin kaweth/trigger_code.bin \
 				   kaweth/trigger_code_fix.bin
 fw-shipped-$(CONFIG_WIRELESS_FIRMWARE_UPDATE) += mfc/mfc_fw_flash.bin
 
-ifdef CONFIG_FIRMWARE_IN_KERNEL
-fw-shipped-$(CONFIG_EXYNOS8890_APM) += apm_8890_evt1.h
-ifdef CONFIG_SOC_EMULATOR8895
-fw-shipped-$(CONFIG_EXYNOS8895_ACPM) += emulator8895_acpm_dvfs.fw
-else
+fw-shipped-$(CONFIG_EXYNOS8890_APM) += apm_8890_evt1.fw
 fw-shipped-$(CONFIG_EXYNOS8895_ACPM) += exynos8895_acpm_dvfs.fw
-endif
 fw-shipped-$(CONFIG_USB_SERIAL_KEYSPAN_MPR) += keyspan/mpr.fw
 fw-shipped-$(CONFIG_USB_SERIAL_KEYSPAN_USA18X) += keyspan/usa18x.fw
 fw-shipped-$(CONFIG_USB_SERIAL_KEYSPAN_USA19) += keyspan/usa19.fw
@@ -125,12 +120,7 @@ fw-shipped-$(CONFIG_USB_SERIAL_KEYSPAN_USA28XB) += keyspan/usa28xb.fw
 fw-shipped-$(CONFIG_USB_SERIAL_KEYSPAN_USA28X) += keyspan/usa28x.fw
 fw-shipped-$(CONFIG_USB_SERIAL_KEYSPAN_USA49W) += keyspan/usa49w.fw
 fw-shipped-$(CONFIG_USB_SERIAL_KEYSPAN_USA49WLC) += keyspan/usa49wlc.fw
-else
-fw-shipped- += keyspan/mpr.fw keyspan/usa18x.fw keyspan/usa19.fw	\
-	keyspan/usa19qi.fw keyspan/usa19qw.fw keyspan/usa19w.fw		\
-	keyspan/usa28.fw keyspan/usa28xa.fw keyspan/usa28xb.fw		\
-	keyspan/usa28x.fw keyspan/usa49w.fw keyspan/usa49wlc.fw
-endif
+
 fw-shipped-$(CONFIG_USB_SERIAL_TI) += ti_3410.fw ti_5052.fw \
 				      mts_cdma.fw mts_gsm.fw mts_edge.fw
 fw-shipped-$(CONFIG_USB_SERIAL_EDGEPORT) += edgeport/boot.fw edgeport/boot2.fw \

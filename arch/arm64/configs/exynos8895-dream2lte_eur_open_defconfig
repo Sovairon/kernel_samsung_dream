@@ -502,7 +502,10 @@ CONFIG_SETEND_EMULATION=y
 #
 # Boot options
 #
-CONFIG_CMDLINE=""
+CONFIG_CMDLINE_BOOL=y
+CONFIG_CMDLINE="console=ram loglevel=4 sec_debug.level=0 androidboot.selinux=permissive sec_watchdog.sec_pet=5 androidboot.debug_level=0x4f4c androidboot.ap_serial=0x03B64E5D16C2 sec_debug.chipidfail_cnt=0 sec_debug.lpitimeout_cnt=0 sec_debug.cache_err_cnt=3 sec_debug.codediff_cnt=0 sec_debug.pcb_offset=7343872 sec_debug.smd_offset=7344896 sec_debug.lpddr4_size=4 androidboot.smsn_offset=7345920 ess_setup=0x91200000 sec_tima_log=0x200000@0x92202000 sec_avc_log=0x40000@0x92404000 sec_summary_log=0x200000@0x92488000 sec_debug.base=0x100000@0x9268a000 auto_summary_log=0x10000@0x9278c000 charging_mode=0x30 s3cfb.bootloaderfb=0xe2a00000 lcdtype=9506835 androidboot.carrierid_offset=7340608 androidboot.carrierid=XSP consoleblank=0 vmalloc=384m sec_debug.reset_reason=7 sec_reset.reset_reason=7 ehci_hcd.park=3 oops=panic pmic_info=43 ccic_info=1 cordon=e67ca04ea3a2ceb1f4c847cb133569f5 connie=SM-G955F_OPEN_EUR_a0646f54e076a21a3172941e28bd30a2 fg_reset=0 androidboot.emmc_checksum=3 androidboot.sales.param.offset=7340572 androidboot.odin_download=1 androidboot.bootloader=G955FXXU1AQG5 androidboot.security_mode=1526595585 androidboot.ucs_mode=0 kaslr_region=0x1000@0x80001000 androidboot.hw_rev=10 androidboot.hardware=samsungexynos8895 androidboot.warranty_bit=1 androidboot.hmac_mismatch=0 androidboot.sec_atd.tty=/dev/ttySAC0 androidboot.serialno=ce04171429780c810c snd_soc_core.pmdown_time=1000 androidboot.cp_reserved_mem=off androidboot.fmp_config=0 androidboot.em.did=03b64e5d16c2 androidboot.em.model=SM-G955F androidboot.em.status=0x0 androidboot.verifiedbootstate=orange bcm_setup=0xffffff80f8e00000 reserve-fimc=0xffffff80fa000000 firmware_class.path=/vendor/firmware region1=EUR region2=OPEN"
+CONFIG_CMDLINE_FORCE=y
+CONFIG_CMDLINE_OVERRIDE=y
 # CONFIG_EFI is not set
 # CONFIG_BUILD_ARM64_APPENDED_DTB_IMAGE is not set
 
@@ -2076,9 +2079,7 @@ CONFIG_HW_RANDOM=y
 # CONFIG_HW_RANDOM_TIMERIOMEM is not set
 # CONFIG_HW_RANDOM_EXYNOS is not set
 CONFIG_HW_RANDOM_EXYNOS_SWD=y
-CONFIG_EXYRNG_FIPS_COMPLIANCE=y
-# CONFIG_EXYRNG_FAIL_POLICY_DISABLE is not set
-CONFIG_EXYRNG_FAIL_POLICY_RESET=y
+# CONFIG_EXYRNG_FIPS_COMPLIANCE is not set
 CONFIG_EXYRNG_USE_CRYPTOMANAGER=y
 # CONFIG_R3964 is not set
 # CONFIG_APPLICOM is not set
@@ -4951,7 +4952,7 @@ CONFIG_CRAMFS=y
 # CONFIG_QNX6FS_FS is not set
 # CONFIG_ROMFS_FS is not set
 CONFIG_PSTORE=y
-CONFIG_PSTORE_CONSOLE=y
+# CONFIG_PSTORE_CONSOLE is not set
 CONFIG_PSTORE_PMSG=y
 CONFIG_PSTORE_RAM=y
 # CONFIG_SYSV_FS is not set
@@ -5245,7 +5246,6 @@ CONFIG_CRYPTO=y
 #
 # Crypto core or helper
 #
-CONFIG_CRYPTO_FIPS=y
 CONFIG_CRYPTO_ALGAPI=y
 CONFIG_CRYPTO_ALGAPI2=y
 CONFIG_CRYPTO_AEAD=y
@@ -5378,9 +5378,7 @@ CONFIG_CRYPTO_HW=y
 CONFIG_FMP_UFS=y
 CONFIG_FMP_DM_CRYPT=y
 CONFIG_FMP_EXT4CRYPT_FS=y
-CONFIG_FIPS_FMP=y
-CONFIG_NODE_FOR_SELFTEST_FAIL=y
-# CONFIG_PANIC_FOR_SELFTEST_FAIL is not set
+# CONFIG_FIPS_FMP is not set
 # CONFIG_ASYMMETRIC_KEY_TYPE is not set
 
 #

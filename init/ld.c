@@ -27,9 +27,6 @@
 #include <linux/init.h>
 #include <linux/proc_fs.h>
 #include <linux/vmalloc.h>
-#ifdef CONFIG_RKP
-#include <linux/vmm.h>
-#endif //CONFIG_RKP
 
 #include "ld.h"
 #include "elf.h"

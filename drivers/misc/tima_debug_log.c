@@ -14,16 +14,8 @@
 #include <linux/memblock.h>
 #endif
 
-#ifdef CONFIG_RKP
-#include <linux/rkp_entry.h>
-#endif
-
 #define	SECURE_LOG	0
 #define	DEBUG_LOG	1
-
-#ifdef CONFIG_RKP
-#define DEBUG_RKP_LOG_START	RKP_LOG_START
-#endif
 #define	DEBUG_LOG_SIZE	(1<<20)
 #define	DEBUG_LOG_MAGIC	(0xaabbccdd)
 #define	DEBUG_LOG_ENTRY_SIZE	128
@@ -50,9 +42,6 @@ typedef struct debug_log_header_s
 unsigned long *tima_log_addr = 0;
 unsigned long *tima_debug_log_addr = 0;
 unsigned long *tima_secure_log_addr = 0;
-#ifdef CONFIG_RKP
-unsigned long *tima_debug_rkp_log_addr = 0;
-#endif
 
 unsigned long tima_debug_logging_start = 0;
 
@@ -98,16 +87,6 @@ ssize_t	tima_read(struct file *filep, char __user *buf, size_t size, loff_t *off
 	else if( !strcmp(filep->f_path.dentry->d_iname, "tima_debug_log"))
 		tima_log_addr = tima_debug_log_addr;
 
-#ifdef CONFIG_RKP
-	else if (!strcmp(filep->f_path.dentry->d_iname, "rkp_log")) {
-		if (*offset >= RKP_LOG_SIZE)
-			return -EINVAL;
-		else if (*offset + size > RKP_LOG_SIZE)
-			size = (RKP_LOG_SIZE) - *offset;
-
-		tima_log_addr = tima_debug_rkp_log_addr;
-	}
-#endif
 	if (copy_to_user(buf, (const char *)tima_log_addr + (*offset), size)) {
 		printk(KERN_ERR"Copy to user failed\n");
 		return -1;
@@ -143,9 +122,6 @@ static int __init tima_debug_log_read_init(void)
 
 	tima_debug_log_addr = (unsigned long *)phys_to_virt(tima_debug_logging_start);
 	tima_secure_log_addr = (unsigned long *)phys_to_virt(tima_secure_logging_start);
-#ifdef CONFIG_RKP
-	tima_debug_rkp_log_addr  = (unsigned long *)phys_to_virt(DEBUG_RKP_LOG_START);
-#endif
 	return 0;
 
 remove_debug_entry:

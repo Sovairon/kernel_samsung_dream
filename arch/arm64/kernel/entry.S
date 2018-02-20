@@ -252,11 +252,7 @@ tsk	.req	x28		// current thread_info
  */
 
 	.align	11
-#ifdef CONFIG_RKP_CFP_JOPP
-VECTOR_ENTRY(vectors)
-#else
 ENTRY(vectors)
-#endif
 	ventry	el1_sync_invalid		// Synchronous EL1t
 	ventry	el1_irq_invalid			// IRQ EL1t
 	ventry	el1_fiq_invalid			// FIQ EL1t
