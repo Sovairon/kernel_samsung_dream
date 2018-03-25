@@ -137,7 +137,7 @@ static void wake_presspwr(struct work_struct * wake_presspwr_work) {
 	msleep(WG_PWRKEY_DUR);
 	mutex_unlock(&pwrkeyworklock);
 
-	vib_trigger(vib_strength);
+	//vib_trigger(vib_strength);
 
 	return;
 }
