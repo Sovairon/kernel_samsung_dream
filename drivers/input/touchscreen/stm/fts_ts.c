@@ -79,6 +79,16 @@ enum subsystem {
 
 #endif
 
+#ifdef CONFIG_WAKE_GESTURES
+#include <linux/kernel.h>
+#include <linux/wake_gestures.h>
+static bool is_suspended;
+bool scr_suspended(void)
+{
+	return is_suspended;
+}
+#endif
+
 #ifdef CONFIG_OF
 #ifndef USE_OPEN_CLOSE
 #define USE_OPEN_CLOSE
@@ -1762,7 +1772,12 @@ static unsigned char fts_event_handler_type_b(struct fts_ts_info *info,
 			input_mt_slot(info->input_dev, TouchID);
 			input_mt_report_slot_state(info->input_dev,
 						   MT_TOOL_FINGER, 1 + (palm << 1));
-
+/*
+#ifdef CONFIG_WAKE_GESTURES
+			if (is_suspended)
+				info-> += 5000;
+#endif
+*/
 			input_report_key(info->input_dev, BTN_TOOL_FINGER, 1);
 			input_report_abs(info->input_dev, ABS_MT_POSITION_X, x);
 			input_report_abs(info->input_dev, ABS_MT_POSITION_Y, y);
@@ -3168,6 +3183,10 @@ static int fts_input_open(struct input_dev *dev)
 	struct fts_ts_info *info = input_get_drvdata(dev);
 	int retval;
 
+#ifdef CONFIG_WAKE_GESTURES
+	is_suspended = false;
+#endif
+
 	if (!info->probe_done) {
 		input_dbg(true, &info->client->dev, "%s: not probe\n", __func__);
 		goto out;
@@ -3208,6 +3227,10 @@ out:
 static void fts_input_close(struct input_dev *dev)
 {
 	struct fts_ts_info *info = input_get_drvdata(dev);
+
+#ifdef CONFIG_WAKE_GESTURES
+	is_suspended = true;
+#endif
 
 	if (!info->probe_done || info->shutdown_is_on_going) {
 		input_dbg(false, &info->client->dev, "%s: not probe\n", __func__);
