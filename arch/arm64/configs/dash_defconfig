@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/arm64 4.4.122 Kernel Configuration
+# Linux/arm64 4.4.127 Kernel Configuration
 #
 CONFIG_ARM64=y
 CONFIG_64BIT=y
@@ -41,8 +41,8 @@ CONFIG_IRQ_WORK=y
 CONFIG_INIT_ENV_ARG_LIMIT=32
 CONFIG_CROSS_COMPILE=""
 # CONFIG_COMPILE_TEST is not set
-CONFIG_LOCALVERSION=""
-CONFIG_LOCALVERSION_AUTO=y
+CONFIG_LOCALVERSION="-DashKernel-R17"
+# CONFIG_LOCALVERSION_AUTO is not set
 CONFIG_DEFAULT_HOSTNAME="(none)"
 CONFIG_SWAP=y
 # CONFIG_SYSVIPC is not set
@@ -287,9 +287,11 @@ CONFIG_BLOCK_SUPPORT_STLOG=y
 #
 CONFIG_IOSCHED_NOOP=y
 # CONFIG_IOSCHED_DEADLINE is not set
+CONFIG_IOSCHED_MAPLE=y
 CONFIG_IOSCHED_CFQ=y
 CONFIG_DEFAULT_CFQ=y
 # CONFIG_DEFAULT_NOOP is not set
+# CONFIG_DEFAULT_MAPLE is not set
 CONFIG_DEFAULT_IOSCHED="cfq"
 CONFIG_UNINLINE_SPIN_UNLOCK=y
 CONFIG_ARCH_SUPPORTS_ATOMIC_RMW=y
@@ -325,9 +327,10 @@ CONFIG_ARCH_EXYNOS=y
 # CONFIG_SOC_EXYNOS8890 is not set
 CONFIG_SOC_EXYNOS8895=y
 # CONFIG_SOC_EMULATOR8895 is not set
-# CONFIG_MODEL_DREAMLTE is not set
-CONFIG_MODEL_DREAM2LTE=y
+CONFIG_MODEL_DREAMLTE=y
+# CONFIG_MODEL_DREAM2LTE is not set
 CONFIG_ARCH_EXYNOS8=y
+# CONFIG_EXYNOS_DTBTOOL is not set
 # CONFIG_ZONE_MOVABLE is not set
 
 #
@@ -502,10 +505,7 @@ CONFIG_SETEND_EMULATION=y
 #
 # Boot options
 #
-CONFIG_CMDLINE_BOOL=y
-CONFIG_CMDLINE="console=ram loglevel=4 sec_debug.level=0 androidboot.selinux=permissive sec_watchdog.sec_pet=5 androidboot.debug_level=0x4f4c androidboot.ap_serial=0x03B64E5D16C2 sec_debug.chipidfail_cnt=0 sec_debug.lpitimeout_cnt=0 sec_debug.cache_err_cnt=3 sec_debug.codediff_cnt=0 sec_debug.pcb_offset=7343872 sec_debug.smd_offset=7344896 sec_debug.lpddr4_size=4 androidboot.smsn_offset=7345920 ess_setup=0x91200000 sec_tima_log=0x200000@0x92202000 sec_avc_log=0x40000@0x92404000 sec_summary_log=0x200000@0x92488000 sec_debug.base=0x100000@0x9268a000 auto_summary_log=0x10000@0x9278c000 charging_mode=0x30 s3cfb.bootloaderfb=0xe2a00000 lcdtype=9506835 androidboot.carrierid_offset=7340608 androidboot.carrierid=XSP consoleblank=0 vmalloc=384m sec_debug.reset_reason=7 sec_reset.reset_reason=7 ehci_hcd.park=3 oops=panic pmic_info=43 ccic_info=1 cordon=e67ca04ea3a2ceb1f4c847cb133569f5 connie=SM-G955F_OPEN_EUR_a0646f54e076a21a3172941e28bd30a2 fg_reset=0 androidboot.emmc_checksum=3 androidboot.sales.param.offset=7340572 androidboot.odin_download=1 androidboot.bootloader=G955FXXU1AQG5 androidboot.security_mode=1526595585 androidboot.ucs_mode=0 kaslr_region=0x1000@0x80001000 androidboot.hw_rev=10 androidboot.hardware=samsungexynos8895 androidboot.warranty_bit=1 androidboot.hmac_mismatch=0 androidboot.sec_atd.tty=/dev/ttySAC0 androidboot.serialno=ce04171429780c810c snd_soc_core.pmdown_time=1000 androidboot.cp_reserved_mem=off androidboot.fmp_config=0 androidboot.em.did=03b64e5d16c2 androidboot.em.model=SM-G955F androidboot.em.status=0x0 androidboot.verifiedbootstate=orange bcm_setup=0xffffff80f8e00000 reserve-fimc=0xffffff80fa000000 firmware_class.path=/vendor/firmware region1=EUR region2=OPEN"
-CONFIG_CMDLINE_FORCE=y
-CONFIG_CMDLINE_OVERRIDE=y
+CONFIG_CMDLINE=""
 # CONFIG_EFI is not set
 # CONFIG_BUILD_ARM64_APPENDED_DTB_IMAGE is not set
 
@@ -548,6 +548,7 @@ CONFIG_PM_GENERIC_DOMAINS_SLEEP=y
 CONFIG_PM_GENERIC_DOMAINS_OF=y
 CONFIG_CPU_PM=y
 CONFIG_FOTA_LIMIT=y
+CONFIG_BOEFFLA_WL_BLOCKER=y
 CONFIG_ARCH_SUSPEND_POSSIBLE=y
 CONFIG_SAMSUNG_PRODUCT_SHIP=y
 
@@ -621,6 +622,8 @@ CONFIG_XFRM_IPCOMP=y
 CONFIG_NET_KEY=y
 # CONFIG_NET_KEY_MIGRATE is not set
 CONFIG_INET=y
+CONFIG_WIREGUARD=y
+# CONFIG_WIREGUARD_DEBUG is not set
 CONFIG_IP_MULTICAST=y
 CONFIG_IP_ADVANCED_ROUTER=y
 # CONFIG_IP_FIB_TRIE_STATS is not set
@@ -637,7 +640,7 @@ CONFIG_NET_IP_TUNNEL=y
 # CONFIG_IP_MROUTE is not set
 # CONFIG_SYN_COOKIES is not set
 # CONFIG_NET_IPVTI is not set
-# CONFIG_NET_UDP_TUNNEL is not set
+CONFIG_NET_UDP_TUNNEL=y
 # CONFIG_NET_FOU is not set
 # CONFIG_NET_FOU_IP_TUNNELS is not set
 CONFIG_INET_AH=y
@@ -1489,6 +1492,7 @@ CONFIG_NET_CORE=y
 # CONFIG_MACVLAN is not set
 # CONFIG_IPVLAN is not set
 # CONFIG_VXLAN is not set
+# CONFIG_GENEVE is not set
 # CONFIG_NETCONSOLE is not set
 # CONFIG_NETPOLL is not set
 # CONFIG_NET_POLL_CONTROLLER is not set
@@ -2079,7 +2083,9 @@ CONFIG_HW_RANDOM=y
 # CONFIG_HW_RANDOM_TIMERIOMEM is not set
 # CONFIG_HW_RANDOM_EXYNOS is not set
 CONFIG_HW_RANDOM_EXYNOS_SWD=y
-# CONFIG_EXYRNG_FIPS_COMPLIANCE is not set
+CONFIG_EXYRNG_FIPS_COMPLIANCE=y
+# CONFIG_EXYRNG_FAIL_POLICY_DISABLE is not set
+CONFIG_EXYRNG_FAIL_POLICY_RESET=y
 CONFIG_EXYRNG_USE_CRYPTOMANAGER=y
 # CONFIG_R3964 is not set
 # CONFIG_APPLICOM is not set
@@ -2840,8 +2846,8 @@ CONFIG_AF_HOST_CONTROL=y
 # CONFIG_TORCH_CURRENT_CHANGE_SUPPORT is not set
 # CONFIG_CAMERA_HERO is not set
 # CONFIG_CAMERA_VJFLTE is not set
-# CONFIG_CAMERA_DREAM is not set
-CONFIG_CAMERA_DREAM2=y
+CONFIG_CAMERA_DREAM=y
+# CONFIG_CAMERA_DREAM2 is not set
 # CONFIG_CAMERA_HERO2DREAM2 is not set
 # CONFIG_CAMERA_BAIKAL is not set
 # CONFIG_CAMERA_GREAT is not set
@@ -3068,8 +3074,8 @@ CONFIG_EXYNOS_DECON_LCD_S6E3HA6=y
 CONFIG_ACTIVE_CLOCK=y
 CONFIG_SUPPORT_POC_FLASH=y
 # CONFIG_PANEL_POC_2_0 is not set
-# CONFIG_POC_DREAM is not set
-CONFIG_POC_DREAM2=y
+CONFIG_POC_DREAM=y
+# CONFIG_POC_DREAM2 is not set
 CONFIG_PANEL_BACKLIGHT_PAC_3_0=y
 CONFIG_DISPLAY_USE_INFO=y
 CONFIG_SUPPORT_HDR=y
@@ -4732,9 +4738,9 @@ CONFIG_SENSORS_SSP_LPS22H=y
 # CONFIG_SENSORS_SSP_STM32F401 is not set
 # CONFIG_SENSORS_SSP_IRLED is not set
 CONFIG_SENSORS_HRMSENSOR=y
-# CONFIG_SENSORS_HRM_MAX86902 is not set
-CONFIG_SENSORS_HRM_ADPD143=y
-# CONFIG_SENSORS_HRM_MAX869_ENHANCED_EOL is not set
+CONFIG_SENSORS_HRM_MAX86902=y
+# CONFIG_SENSORS_HRM_ADPD143 is not set
+CONFIG_SENSORS_HRM_MAX869_ENHANCED_EOL=y
 # CONFIG_SENSORS_HRM_MAX869_NEW_EOL is not set
 CONFIG_MAX86902_THRESHOLD=70000
 # CONFIG_SENSOR_SSP_PROXIMTY_FOR_WINDOW_TYPE is not set
@@ -4952,7 +4958,7 @@ CONFIG_CRAMFS=y
 # CONFIG_QNX6FS_FS is not set
 # CONFIG_ROMFS_FS is not set
 CONFIG_PSTORE=y
-# CONFIG_PSTORE_CONSOLE is not set
+CONFIG_PSTORE_CONSOLE=y
 CONFIG_PSTORE_PMSG=y
 CONFIG_PSTORE_RAM=y
 # CONFIG_SYSV_FS is not set
@@ -5246,6 +5252,7 @@ CONFIG_CRYPTO=y
 #
 # Crypto core or helper
 #
+CONFIG_CRYPTO_FIPS=y
 CONFIG_CRYPTO_ALGAPI=y
 CONFIG_CRYPTO_ALGAPI2=y
 CONFIG_CRYPTO_AEAD=y
@@ -5378,7 +5385,9 @@ CONFIG_CRYPTO_HW=y
 CONFIG_FMP_UFS=y
 CONFIG_FMP_DM_CRYPT=y
 CONFIG_FMP_EXT4CRYPT_FS=y
-# CONFIG_FIPS_FMP is not set
+CONFIG_FIPS_FMP=y
+CONFIG_NODE_FOR_SELFTEST_FAIL=y
+# CONFIG_PANIC_FOR_SELFTEST_FAIL is not set
 # CONFIG_ASYMMETRIC_KEY_TYPE is not set
 
 #
