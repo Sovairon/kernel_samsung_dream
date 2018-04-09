@@ -7,13 +7,24 @@ BUILD_ROOT_DIR=$BUILD_KERNEL_DIR/..
 BUILD_KERNEL_OUT_DIR=$BUILD_ROOT_DIR/kernel_out/KERNEL_OBJ
 PRODUCT_OUT=$BUILD_ROOT_DIR/kernel_out
 
-export PATH=$PATH:/home/michael/android/toolchain/aarch64-linux-gnu/bin/
-export KERNEL_TOOLCHAIN=aarch64-linux-gnu-
+# Default parameter
+DEVICE="dreamlte"
+TOOLCHAIN="7"
+
+case $DEVICE in
+    "dreamlte") KERNEL_DEFCONFIG=dash_defconfig;;
+    "dream2lte") KERNEL_DEFCONFIG=dash2_defconfig;;
+    *) die "Invalid defconfig!";
+esac 
+
+case $TOOLCHAIN in
+    "4.9") KERNEL_TOOLCHAIN=aarch64-linux-android-; export PATH=$PATH:/home/michael/android/toolchain/aarch64-linux-android/bin/ ;;
+    "7") KERNEL_TOOLCHAIN=aarch64-linux-gnu-; export PATH=$PATH:/home/michael/android/toolchain/aarch64-linux-gnu/bin/ ;;
+    *) die "Invalid toolchain!";
+esac 
 
 BUILD_CROSS_COMPILE=$KERNEL_TOOLCHAIN
 BUILD_JOB_NUMBER=`grep processor /proc/cpuinfo|wc -l`
-
-KERNEL_DEFCONFIG=exynos8895-dream2lte_eur_open_defconfig
 
 KERNEL_IMG=$PRODUCT_OUT/Image
 DTIMG=$PRODUCT_OUT/dt.img
