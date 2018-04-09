@@ -123,7 +123,6 @@ CONFIG_CGROUP_FREEZER=y
 CONFIG_CPUSETS=y
 CONFIG_PROC_PID_CPUSET=y
 CONFIG_CGROUP_CPUACCT=y
-# CONFIG_CGROUP_SCHEDTUNE is not set
 # CONFIG_MEMCG is not set
 # CONFIG_CGROUP_PERF is not set
 CONFIG_CGROUP_SCHED=y
@@ -138,7 +137,6 @@ CONFIG_UTS_NS=y
 CONFIG_PID_NS=y
 CONFIG_NET_NS=y
 # CONFIG_SCHED_AUTOGROUP is not set
-CONFIG_SCHED_TUNE=y
 # CONFIG_SYSFS_DEPRECATED is not set
 # CONFIG_RELAY is not set
 CONFIG_BLK_DEV_INITRD=y
@@ -506,9 +504,13 @@ CONFIG_SETEND_EMULATION=y
 #
 # Boot options
 #
-CONFIG_CMDLINE=""
+CONFIG_CMDLINE="console=ram loglevel=4 sec_debug.level=0 androidboot.selinux=permissive sec_watchdog.sec_pet=5 androidboot.debug_level=0x4f4c androidboot.dram_info=01,12,00,4G androidboot.ap_serial=0x01B5AD1619C2 sec_debug.chipidfail_cnt=0 sec_debug.lpitimeout_cnt=0 sec_debug.cache_err_cnt=82 sec_debug.codediff_cnt=66 sec_debug.pcb_offset=7343872 sec_debug.smd_offset=7344896 sec_debug.lpddr4_size=4 androidboot.smsn_offset=7345920 ess_setup=0x91200000 tima_log=0x200000@0xb1000000 sec_avc_log=0x40000@0x92202000 sec_debug.base=0x100000@0x92286000 auto_summary_log=0x10000@0x92388000 charging_mode=0x30 s3cfb.bootloaderfb=0xcc000000 lcdtype=13713429 androidboot.carrierid_offset=7340608 androidboot.carrierid=XID consoleblank=0 vmalloc=384m sec_debug.reset_reason=7 sec_reset.reset_reason=7 ehci_hcd.park=3 oops=panic pmic_info=43 ccic_info=1 cordon=59bc604f3d9526455763104f21ae520b connie=SM-G950F_OPEN_EUR_c4078880eb1d08a6cb08fbde547f73c2 fg_reset=0 androidboot.emmc_checksum=3 androidboot.sales.param.offset=7340572 sales_code=XEU androidboot.odin_download=1 androidboot.bootloader=G950FXXU1CRB7 androidboot.security_mode=1526595585 androidboot.ucs_mode=0 kaslr_region=0x1000@0x80001000 androidboot.hw_rev=10 androidboot.hardware=samsungexynos8895 androidboot.warranty_bit=1 androidboot.wb.hs=030c sec_debug.bin=A androidboot.hmac_mismatch=0 androidboot.sec_atd.tty=/dev/ttySAC0 androidboot.serialno=ce0317139136cced0c snd_soc_core.pmdown_time=1000 androidboot.cp_reserved_mem=off androidboot.fmp_config=0 androidboot.em.did=01b5ad1619c2 androidboot.em.model=SM-G950F androidboot.em.status=0x0 androidboot.verifiedbootstate=orange bcm_setup=0xffffff80f8e00000 reserve-fimc=0xffffff80fa000000 firmware_class.path=/vendor/firmware region1=EUR region2=OPEN"
+# CONFIG_CMDLINE_FROM_BOOTLOADER is not set
+# CONFIG_CMDLINE_EXTEND is not set
+CONFIG_CMDLINE_FORCE=y
 # CONFIG_EFI is not set
 # CONFIG_BUILD_ARM64_APPENDED_DTB_IMAGE is not set
+
 
 #
 # Userspace binary formats
@@ -596,7 +598,6 @@ CONFIG_CPU_FREQ_GOV_USERSPACE=y
 CONFIG_CPU_FREQ_GOV_INTERACTIVE=y
 CONFIG_CPU_FREQ_GOV_CONSERVATIVE=y
 # CONFIG_CPU_FREQ_GOV_SCHEDUTIL is not set
-# CONFIG_FREQVAR_SCHEDTUNE is not set
 
 #
 # CPU frequency scaling drivers
@@ -2087,9 +2088,7 @@ CONFIG_HW_RANDOM=y
 # CONFIG_HW_RANDOM_TIMERIOMEM is not set
 # CONFIG_HW_RANDOM_EXYNOS is not set
 CONFIG_HW_RANDOM_EXYNOS_SWD=y
-CONFIG_EXYRNG_FIPS_COMPLIANCE=y
-# CONFIG_EXYRNG_FAIL_POLICY_DISABLE is not set
-CONFIG_EXYRNG_FAIL_POLICY_RESET=y
+# CONFIG_EXYRNG_FIPS_COMPLIANCE is not set
 CONFIG_EXYRNG_USE_CRYPTOMANAGER=y
 # CONFIG_R3964 is not set
 # CONFIG_APPLICOM is not set
@@ -4963,7 +4962,7 @@ CONFIG_CRAMFS=y
 # CONFIG_QNX6FS_FS is not set
 # CONFIG_ROMFS_FS is not set
 CONFIG_PSTORE=y
-CONFIG_PSTORE_CONSOLE=y
+# CONFIG_PSTORE_CONSOLE is not set
 CONFIG_PSTORE_PMSG=y
 CONFIG_PSTORE_RAM=y
 # CONFIG_SYSV_FS is not set
@@ -5257,7 +5256,7 @@ CONFIG_CRYPTO=y
 #
 # Crypto core or helper
 #
-CONFIG_CRYPTO_FIPS=y
+# CONFIG_CRYPTO_FIPS is not set
 CONFIG_CRYPTO_ALGAPI=y
 CONFIG_CRYPTO_ALGAPI2=y
 CONFIG_CRYPTO_AEAD=y
@@ -5390,9 +5389,7 @@ CONFIG_CRYPTO_HW=y
 CONFIG_FMP_UFS=y
 CONFIG_FMP_DM_CRYPT=y
 CONFIG_FMP_EXT4CRYPT_FS=y
-CONFIG_FIPS_FMP=y
-CONFIG_NODE_FOR_SELFTEST_FAIL=y
-# CONFIG_PANIC_FOR_SELFTEST_FAIL is not set
+# CONFIG_FIPS_FMP is not set
 # CONFIG_ASYMMETRIC_KEY_TYPE is not set
 
 #
