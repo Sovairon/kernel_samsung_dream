@@ -78,7 +78,12 @@ bool in_fips_err(void);
 void set_in_fips_err(void);
 void crypto_init_proc(int *fips_error);
 int do_integrity_check(void);
+#ifdef CONFIG_CRYPTO_FIPS
 int testmgr_crypto_proc_init(void);
+#else
+int __init testmgr_crypto_proc_init(void);
+#endif
+const char *get_builtime_crypto_hmac(void);
 #else
 void __init crypto_init_proc(void);
 #endif
