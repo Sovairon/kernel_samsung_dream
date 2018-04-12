@@ -639,9 +639,6 @@ KBUILD_CFLAGS   += -O2
 endif
 endif
 
-# -Ofast optimization
-KBUILD_CFLAGS	+= -Ofast
-
 # Processor-specific tunes for Exynos 8895
 KBUILD_CFLAGS	+= $(call cc-option,-mtune=exynos-m1.cortex-a53)
 
