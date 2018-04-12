@@ -8,9 +8,9 @@ BUILD_KERNEL_OUT_DIR=$BUILD_ROOT_DIR/kernel_out/KERNEL_OBJ
 PRODUCT_OUT=$BUILD_ROOT_DIR/kernel_out
 
 # Default parameter
-DEVICE="dreamlte"
+DEVICE="dream2lte"
 TOOLCHAIN="7"
-KERNEL_DTBTOOL="./dtbTool"
+KERNEL_DTBTOOL=$BUILD_KERNEL_OUT_DIR/scripts/dtbTool/dtbTool
 
 case $DEVICE in
     "dreamlte") KERNEL_DEFCONFIG=dash_defconfig; export LOCALVERSION="-DashKernel-Dream" ;;
@@ -26,12 +26,9 @@ esac
 
 BUILD_CROSS_COMPILE=$KERNEL_TOOLCHAIN
 BUILD_JOB_NUMBER=`grep processor /proc/cpuinfo|wc -l`
-
 KERNEL_IMG=$PRODUCT_OUT/Image
 DTIMG=$PRODUCT_OUT/dt.img
-
 DTBTOOL=$KERNEL_DTBTOOL
-
 
 FUNC_COMPILE_KERNEL()
 {
@@ -47,16 +44,7 @@ FUNC_COMPILE_KERNEL()
 	echo " Done!"
 	echo " "
 	echo "----------------------------------------------"
-	echo " 2. GENERATE DTB"
-	echo " "
-	rm -rf $BUILD_KERNEL_OUT_DIR/arch/arm64/boot/dts
-	make dtbs -C $BUILD_KERNEL_DIR O=$BUILD_KERNEL_OUT_DIR -j$BUILD_JOB_NUMBER ARCH=arm64 \
-			CROSS_COMPILE=$BUILD_CROSS_COMPILE || exit -1
-	echo " "
-	echo " Done!"
-	echo " "
-	echo "----------------------------------------------"
-	echo " 3. COMPILE KERNEL"
+	echo " 2. COMPILE KERNEL & DTB"
 	echo " "
 	rm $KERNEL_IMG $BUILD_KERNEL_OUT_DIR/arch/arm64/boot/Image
 	rm -rf $BUILD_KERNEL_OUT_DIR/arch/arm64/boot/dts
@@ -75,9 +63,12 @@ fi
 	echo "Made Kernel image: $KERNEL_IMG , Done!"
 	echo " "
 	echo "----------------------------------------------"
-	echo " 4. GENERATE DT.IMG"
+	echo " 3. GENERATE DT.IMG"
+	rm -r $BUILD_KERNEL_OUT_DIR/scripts/dtbTool
+	mkdir $BUILD_KERNEL_OUT_DIR/scripts/dtbTool
+	cp $BUILD_KERNEL_DIR/scripts/dtbTool/dtbTool $BUILD_KERNEL_OUT_DIR/scripts/dtbTool/dtbTool
 	rm $DTIMG
-	$DTBTOOL -s 2048 -d $BUILD_KERNEL_OUT_DIR/arch/arm64/boot/dts -o $DTIMG
+	$DTBTOOL -s 2048 -d $BUILD_KERNEL_OUT_DIR/arch/arm64/boot/dts/exynos -o $DTIMG
 	if [ -f "$DTIMG" ]; then
 		echo "Made DT image: $DTIMG"
 	fi
@@ -89,8 +80,6 @@ fi
     START_TIME=`date +%s`
 
     FUNC_COMPILE_KERNEL
-
-    FUNC_GENERATE_DTIMG
 
     END_TIME=`date +%s`
 

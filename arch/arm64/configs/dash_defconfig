@@ -511,7 +511,6 @@ CONFIG_CMDLINE_FORCE=y
 # CONFIG_EFI is not set
 # CONFIG_BUILD_ARM64_APPENDED_DTB_IMAGE is not set
 
-
 #
 # Userspace binary formats
 #
