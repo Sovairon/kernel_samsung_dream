@@ -143,7 +143,7 @@ static int samsung_kbd_input_mapping(struct hid_device *hdev,
 
 	if (HID_UP_KEYBOARD == (usage->hid & HID_USAGE_PAGE)) {
 		switch (usage->hid & HID_USAGE) {
-		set_bit(EV_REP, hi->input->evbit);
+		// set_bit(EV_REP, hi->input->evbit);
 		/* Only for UK keyboard */
 		/* key found */
 #ifdef CONFIG_HID_KK_UPGRADE
@@ -276,7 +276,7 @@ static int samsung_universal_kbd_input_mapping(struct hid_device *hdev,
 
 	if (HID_UP_KEYBOARD == (usage->hid & HID_USAGE_PAGE)) {
 		switch (usage->hid & HID_USAGE) {
-		set_bit(EV_REP, hi->input->evbit);
+		// set_bit(EV_REP, hi->input->evbit);
 		/* Only for UK keyboard */
 		/* key found */
 #ifdef CONFIG_HID_KK_UPGRADE
