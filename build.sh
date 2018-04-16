@@ -13,7 +13,7 @@ TOOLCHAIN="7"
 KERNEL_DTBTOOL=$BUILD_KERNEL_OUT_DIR/scripts/dtbTool/dtbTool
 
 case $DEVICE in
-    "dreamlte") KERNEL_DEFCONFIG=dash_defconfig; export LOCALVERSION="-DashKernel-Dream-nighlty" ;;
+    "dreamlte") KERNEL_DEFCONFIG=dash_defconfig; export LOCALVERSION="-DashKernel-Dream-nightly" ;;
     "dream2lte") KERNEL_DEFCONFIG=dash2_defconfig; export LOCALVERSION="-DashKernel-Dream2" ;;
     *) die "Invalid defconfig!";
 esac 
