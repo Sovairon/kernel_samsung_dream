@@ -8,12 +8,12 @@ BUILD_KERNEL_OUT_DIR=$BUILD_ROOT_DIR/kernel_out/KERNEL_OBJ
 PRODUCT_OUT=$BUILD_ROOT_DIR/kernel_out
 
 # Default parameter
-DEVICE="dream2lte"
+DEVICE="dreamlte"
 TOOLCHAIN="7"
 KERNEL_DTBTOOL=$BUILD_KERNEL_OUT_DIR/scripts/dtbTool/dtbTool
 
 case $DEVICE in
-    "dreamlte") KERNEL_DEFCONFIG=dash_defconfig; export LOCALVERSION="-DashKernel-Dream" ;;
+    "dreamlte") KERNEL_DEFCONFIG=dash_defconfig; export LOCALVERSION="-DashKernel-Dream-nighlty" ;;
     "dream2lte") KERNEL_DEFCONFIG=dash2_defconfig; export LOCALVERSION="-DashKernel-Dream2" ;;
     *) die "Invalid defconfig!";
 esac 
@@ -46,7 +46,7 @@ FUNC_COMPILE_KERNEL()
 	echo "----------------------------------------------"
 	echo " 2. COMPILE KERNEL & DTB"
 	echo " "
-	rm $KERNEL_IMG $BUILD_KERNEL_OUT_DIR/arch/arm64/boot/Image
+	rm $DTIMG $KERNEL_IMG $BUILD_KERNEL_OUT_DIR/arch/arm64/boot/Image
 	rm -rf $BUILD_KERNEL_OUT_DIR/arch/arm64/boot/dts
 
 if [ "$USE_CCACHE" ]
